@@ -27,3 +27,6 @@ The following tools are required to build and deploy the app:
 
 The system has no runtime dependencies other than the database storage (MongoDB). It is built on the [echo](http://echo.labstack.com/)
 
+### Build
+The build is using [Gulp](http://gulp.com/)
+
