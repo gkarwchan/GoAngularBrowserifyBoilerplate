@@ -1,0 +1,40 @@
+<!doctype html>
+<html class="no-js" lang="en" ng-app="app">
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="description" content="Angular Browserify Boilerplate">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <link rel="apple-touch-icon" href="apple-touch-icon.png">
+      <title ng-bind="$state.current.data.title"></title>
+      <base href="/">
+      <link rel="stylesheet" href="/styles/main.css">
+      <link rel="icon" type="image/png" href="/images/favicon.ico">
+      <script src="/scripts/main.js" async="async"></script>
+    </head>
+    <body>
+      <toast></toast>
+      <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid" ng-controller="NavbarCtrl">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" ng-click="navbarCollapsed = !navbarCollapsed">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a ui-sref="home"><img class="navbar-logo" src="/images/logo.png" alt="My Logo" ></a>
+            </div>
+            <div ui-view="toolbar"></div>
+        </div>
+    </nav>
+
+      <div id="body">
+        <div id="main">
+            <div ui-view></div>
+        </div>
+      </div>
+
+    </body>
+</html>

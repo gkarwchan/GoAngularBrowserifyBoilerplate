@@ -1,0 +1,21 @@
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "../../bower_components/ngtoast/dist/ngToast.css";
+@import "../../bower_components/ngtoast/dist/ngToast-animations.css";
+@import "../../bower_components/bootstrap-social/bootstrap-social.scss";
+@import "../../bower_components/font-awesome/scss/font-awesome.scss";
+
+
+body, html {
+  height: 100%;
+  background-repeat: no-repeat;
+}
+
+.forgot-password {
+	text-decoration: underline;
+	color: #888;
+}
+
+img.navbar-logo {
+  height: 60px;
+  width: auto;
+}

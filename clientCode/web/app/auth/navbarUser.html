@@ -1,0 +1,17 @@
+<div class="nav-collapse" uib-collapse="navbarCollapsed">
+    <ui-view="menu"></ui-view>
+    <ul class="nav navbar-nav navbar-right">
+        <div uib-dropdown>
+            <img ng-src="{{ auth.user.pic }}" class="navbar-avatar img-circle" ng-show="auth.user.pic != null">
+            <p class="navbar-text" ng-bind="auth.user.name"></p>
+            <button uib-dropdown-toggle class="btn btn-link" id="login-menu-button"><span class="caret"></span></button>
+            <ul uib-dropdown-menu role="menu" aria-labelledby="split-button" id="login-menu">
+                <li role="menuitem" ng-show="isPatient()">
+                    <a ui-sref="profile">
+                        <button type="button" class="btn btn-link"><i class="fa fa-user fa-fw"></i> Update Profile</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </ul>
+</div>

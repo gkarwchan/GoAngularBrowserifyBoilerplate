@@ -1,0 +1,46 @@
+{
+  "name": "goangularboilerplate",
+  "version": "1.0.0",
+  "description": "Go Angular Browserify Boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gkar68/GoAngularBrowserifyBoilerplate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gkar68/GoAngularBrowserifyBoilerplate/issues"
+  },
+  "browserify-shim": {
+    "angular": {
+      "exports": "angular"
+    }
+  },
+  "browserify": {
+    "transform": [
+      "debowerify",
+      "browserify-ngannotate",
+      "browserify-shim"
+    ]
+  },
+  "homepage": "https://github.com/gkar68/GoAngularBrowserifyBoilerplate#readme",
+  "dependencies": {
+    "browserify": "^13.0.0",
+    "browserify-ngannotate": "^2.0.0",
+    "browserify-shim": "^3.8.12",
+    "debowerify": "^1.4.1",
+    "del": "^2.2.0",
+    "graceful-fs": "^4.1.3",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-debug": "^2.1.2",
+    "gulp-sass": "^2.2.0",
+    "merge-stream": "^1.0.0",
+    "uglifyify": "^3.0.1",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

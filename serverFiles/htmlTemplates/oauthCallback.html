@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signin Complete ...</title>
+	<script lang="javascript">
+        window.addEventListener('message', function(e) {
+            if (e.data === 'requestLogin') {
+                e.source.postMessage({
+                    message : 'loginSuccess',
+                    userLogged: {{.}}
+                }, '*');
+                window.setTimeout(window.close, 500);
+            }
+        });
+	</script>
+</head>
+<body>
+	<pre>Sign-in complete ...</pre>
+</body>
+</html>
