@@ -1,6 +1,8 @@
 # GoAngularBrowserifyBoilerplate
 Boilerplate for a single page web applications using Angular, Browserify, Gulp, MongoDB & Go.
+
 The boilerplate provides these functions:
+
 1. A static web host that serve static files: html/javascript/css using [GO's echo](https://labstack.com/echo).
 2. REST Services that provide the data from the database using [GO's echo](https://labstack.com/echo).
 3. OAuth2 functionality to login using social networks (facebook, google+...)
