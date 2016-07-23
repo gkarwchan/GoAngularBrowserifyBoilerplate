@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/gkar68/GoAngularBrowserifyBoilerplate/settings"
-
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 )
@@ -32,7 +30,7 @@ func initApp() *echo.Echo {
 
 // CreateApp ...
 func CreateApp() *echo.Echo {
-	var staticAssets = settings.StaticAssets
+	var staticAssets = StaticAssets
 	App.Favicon(staticAssets + "/favicon.ico")
 	App.Index(staticAssets + "/index.html")
 	App.Static("/fonts", staticAssets+"/fonts")
@@ -46,10 +44,10 @@ func CreateApp() *echo.Echo {
 
 // Run ...
 func Run(application *echo.Echo) {
-	var address = fmt.Sprintf("%s:%d", settings.WebHost, settings.WebPort)
+	var address = fmt.Sprintf("%s:%d", WebHost, WebPort)
 	log.Printf("starting webserver on %s", address)
-	if settings.UseSSL {
-		application.RunTLS(address, settings.CertFile, settings.KeyFile)
+	if UseSSL {
+		application.RunTLS(address, CertFile, KeyFile)
 	} else {
 		application.Run(address)
 	}

@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gkar68/GoAngularBrowserifyBoilerplate.git"
+    "url": "git+https://github.com/gkarwchan/GoAngularBrowserifyBoilerplate.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/gkar68/GoAngularBrowserifyBoilerplate/issues"
+    "url": "https://github.com/gkarwchan/GoAngularBrowserifyBoilerplate/issues"
   },
   "browserify-shim": {
     "angular": {
@@ -27,7 +27,7 @@
       "browserify-shim"
     ]
   },
-  "homepage": "https://github.com/gkar68/GoAngularBrowserifyBoilerplate#readme",
+  "homepage": "https://github.com/gkarwchan/GoAngularBrowserifyBoilerplate#readme",
   "dependencies": {
     "browserify": "^13.0.0",
     "browserify-ngannotate": "^2.0.0",

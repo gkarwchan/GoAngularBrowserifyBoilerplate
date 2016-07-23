@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"log"
 	"html/template"
-	"github.com/gkar68/GoAngularBrowserifyBoilerplate/auth"
-	"github.com/gkar68/GoAngularBrowserifyBoilerplate/app"
-	"github.com/gkar68/GoAngularBrowserifyBoilerplate/templating"
+	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/auth"
+	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/app"
+	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/templating"
 	"github.com/labstack/echo"
     "github.com/markbates/goth/gothic"
 )

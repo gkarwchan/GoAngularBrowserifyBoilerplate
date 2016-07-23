@@ -1,4 +1,4 @@
-package settings
+package app
 
 import (
 	"log"
@@ -41,9 +41,8 @@ var (
 )
 
 func init() {
-	// flag.StringVar(&config, "config", "", "config file to use")
-	flag.IntVar(&WebPort, "web-port", 8081, "Port to bind to")
-	flag.StringVar(&EndPointURL, "endpoint", "http://localhost:8081/", "end point")
+	flag.IntVar(&WebPort, "web-port", 8080, "Port to bind to")
+	flag.StringVar(&EndPointURL, "endpoint", "http://localhost:8080/", "end point")
 	flag.BoolVar(&UseSSL, "use-ssl", false, "Use SSL")
 	flag.StringVar(&CertFile, "cert-file", "certs/mycert1.cer", "SSL certificate")
 	flag.StringVar(&KeyFile, "key-file", "certs/mycert1.key", "SSL key")
@@ -59,14 +58,15 @@ func init() {
 
 	flag.StringVar(&DatabaseStore, "database", "mongodb://127.0.0.1:27017/model", "database")
 
-	flag.StringVar(&GplusKey, "gplus-key", "348931298414-nv1k83aifd844hut6d1lsebc14dpt4im.apps.googleusercontent.com", "GPlus Key")
-	flag.StringVar(&GplusSecret, "gplus-secret", "DdrXObGcvf5wr8yLByuNRs40", "GPlus secret")
-	flag.StringVar(&FacebookKey, "facebookKey", "", "facebook key")
-	flag.StringVar(&FacebookSecret, "facebookSecret", "", "facebook secret")
-	flag.StringVar(&TwitterKey, "twitterKey", "", "twitter key")
-	flag.StringVar(&TwitterSecret, "twitterSecret", "", "twitter secret")
-	flag.Parse()
+	flag.StringVar(&GplusKey, "gplus-key", "1049113770955-agedcvcoi68qlbc9mm321odb5qdqlgrg.apps.googleusercontent.com", "Google+ OAuth Key")
+	flag.StringVar(&GplusSecret, "gplus-secret", "TjdRDltddkFtlx9dyStuaa5w", "Google+ OAuth Secret")
+	flag.StringVar(&FacebookKey, "facebook-key", "1667094910175363", "facebook key")
+	flag.StringVar(&FacebookSecret, "facebook-secret", "63472dc2deb3269d298f529cc727b9f2", "facebook secret")
+	flag.StringVar(&TwitterKey, "twitter-key", "QVO8QAPqpvnfX6CY3291GkauQ", "twitter key")
+	flag.StringVar(&TwitterSecret, "twitter-secret", "YpaY8TsSR2aLOJh4o9XIqXSgtRubhACmRI2oWTPJs608hdJYv9", "twitter secret")
 
+	flag.Parse()
+	log.Println("mhhhhhhh")
 	log.Printf("Config file						%s", config)
 	log.Printf("Web folder						%s", StaticAssets)
 	log.Printf("Web host						%s", WebHost)

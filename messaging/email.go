@@ -1,7 +1,7 @@
 package messaging
 
 import (
-	"github.com/gkar68/GoAngularBrowserifyBoilerplate/settings"
+	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/app"
 	"gopkg.in/gomail.v1"
 )
 
@@ -9,11 +9,9 @@ var (
 	mailer *gomail.Mailer
 )
 
-
 func init() {
-	mailer = gomail.NewMailer(settings.SmtpHost, settings.SmtpUsername, settings.SmtpPassword, settings.SmtpPort)
+	mailer = gomail.NewMailer(app.SmtpHost, app.SmtpUsername, app.SmtpPassword, app.SmtpPort)
 }
-
 
 // SendEmail will send email from template
 func SendEmail(body, recipient, subject string) error {

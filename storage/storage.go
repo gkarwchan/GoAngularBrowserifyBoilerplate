@@ -1,8 +1,8 @@
 package storage
 
 import (
-	"github.com/gkar68/GoAngularBrowserifyBoilerplate/models"
-	"github.com/gkar68/GoAngularBrowserifyBoilerplate/settings"
+	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/app"
+	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/models"
 	"github.com/satori/go.uuid"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
@@ -19,7 +19,7 @@ var (
 // InitDataStore ...
 func InitDataStore() error {
 	var err error
-	singleSession, err = mgo.Dial(settings.DatabaseStore)
+	singleSession, err = mgo.Dial(app.DatabaseStore)
 	singleSession.SetMode(mgo.Monotonic, true)
 	if err != nil {
 		return err

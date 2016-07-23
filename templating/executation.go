@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gkar68/GoAngularBrowserifyBoilerplate/settings"
+	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/app"
 )
 
 const (
@@ -33,7 +33,7 @@ func getCurrentTime() string {
 // GetTemplate ...
 func GetTemplate(templateFile string) (*template.Template, error) {
 	log.Printf("generating template: %s\n", templateFile)
-	templateFiles := settings.RunFolder + settings.TemplateFolder + "/" + templateFile
+	templateFiles := app.RunFolder + app.TemplateFolder + "/" + templateFile
 	log.Printf("%s", templateFiles)
 	funcMap := template.FuncMap{
 		"upper":       strings.ToUpper,
@@ -46,7 +46,7 @@ func GetTemplate(templateFile string) (*template.Template, error) {
 
 //ExecuteTemplateToString ...
 func ExecuteTemplateToString(templateFile string, data interface{}) (string, error) {
-	
+
 	tmplt, err := GetTemplate(templateFile)
 	if err != nil {
 		log.Println("an error in reading folder")

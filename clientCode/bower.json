@@ -6,7 +6,7 @@
     "gkar68 <ghassan.karwchan@gmail.com>"
   ],
   "license": "ISC",
-  "homepage": "https://github.com/gkar68/GoAngularBrowserifyBoilerplate",
+  "homepage": "https://github.com/gkarwchan/GoAngularBrowserifyBoilerplate",
   "moduleType": [],
   "ignore": [
     "**/.*",
@@ -18,7 +18,6 @@
   "dependencies": {
     "bootstrap-sass": "^3.3.6",
     "angular": "^1.5.0",
-    "angular-ui-router": "^0.2.18",
     "angular-route": "^1.5.0",
     "angular-bootstrap": "^1.2.4",
     "angular-touch": "^1.5.0",
@@ -27,6 +26,7 @@
     "ngToast": "ngtoast#^2.0.0",
     "angular-animate": "^1.5.1",
     "angular-sanitize": "^1.5.1",
-    "bootstrap-social": "^4.12.0"
+    "bootstrap-social": "^4.12.0",
+    "angular-ui-router": "^0.3.1"
   }
 }

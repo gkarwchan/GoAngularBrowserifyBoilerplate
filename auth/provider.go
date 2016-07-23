@@ -1,16 +1,16 @@
 package auth
 
 import (
-	"github.com/gkar68/GoAngularBrowserifyBoilerplate/settings"
-	"github.com/markbates/goth"
-    "net/http"
-	"strings"
 	"errors"
-    "github.com/markbates/goth/gothic"
+	"net/http"
+	"strings"
+
+	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/app"
+	"github.com/markbates/goth"
+	"github.com/markbates/goth/gothic"
 	"github.com/markbates/goth/providers/facebook"
 	"github.com/markbates/goth/providers/gplus"
 )
-
 
 func init() {
 	gothic.GetState = func(req *http.Request) string {
@@ -29,13 +29,13 @@ func init() {
 		}
 		return provider, nil
 	}
-	
-	if settings.GplusKey != "" {
-		useGPlus(settings.GplusKey, settings.GplusSecret)
+
+	if app.GplusKey != "" {
+		useGPlus(app.GplusKey, app.GplusSecret)
 	}
 
-	if settings.FacebookKey != "" {
-		useFacebook(settings.FacebookKey, settings.FacebookSecret)
+	if app.FacebookKey != "" {
+		useFacebook(app.FacebookKey, app.FacebookSecret)
 	}
 }
 
@@ -44,16 +44,14 @@ func GetProviders() goth.Providers {
 	return goth.GetProviders()
 }
 
-
-
 func useGPlus(providerKey, providerSecret string) {
 	goth.UseProviders(
-		gplus.New(providerKey, providerSecret, settings.EndPointURL+"auth/gplus/callback"),
+		gplus.New(providerKey, providerSecret, app.EndPointURL+"auth/gplus/callback"),
 	)
 }
 
 func useFacebook(providerKey, providerSecret string) {
 	goth.UseProviders(
-		facebook.New(providerKey, providerSecret, settings.EndPointURL+"auth/facebook/callback"),
+		facebook.New(providerKey, providerSecret, app.EndPointURL+"auth/facebook/callback"),
 	)
 }

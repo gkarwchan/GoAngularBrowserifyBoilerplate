@@ -1,18 +1,20 @@
 package main
 
 import (
-   "github.com/gkar68/GoAngularBrowserifyBoilerplate/api/publicApi"
-   "github.com/gkar68/GoAngularBrowserifyBoilerplate/app"
-   "github.com/gkar68/GoAngularBrowserifyBoilerplate/storage"
-   "github.com/labstack/echo"
-)
+	"log"
 
+	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/api/publicApi"
+	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/app"
+	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/storage"
+	"github.com/labstack/echo"
+)
 
 var (
 	localApp *echo.Echo
 )
 
 func main() {
+	log.Println("strt .........")
 	localApp := app.CreateApp()
 	publicApi.InitAuthWebServices(localApp)
 	err := storage.InitDataStore()
