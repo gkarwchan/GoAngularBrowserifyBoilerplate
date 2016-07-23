@@ -66,7 +66,6 @@ func init() {
 	flag.StringVar(&TwitterSecret, "twitter-secret", "YpaY8TsSR2aLOJh4o9XIqXSgtRubhACmRI2oWTPJs608hdJYv9", "twitter secret")
 
 	flag.Parse()
-	log.Println("mhhhhhhh")
 	log.Printf("Config file						%s", config)
 	log.Printf("Web folder						%s", StaticAssets)
 	log.Printf("Web host						%s", WebHost)
