@@ -2,10 +2,7 @@ package storage
 
 import (
 	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/app"
-	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/models"
-	"github.com/satori/go.uuid"
 	"gopkg.in/mgo.v2"
-	"gopkg.in/mgo.v2/bson"
 )
 
 const (
@@ -16,65 +13,12 @@ var (
 	singleSession *mgo.Session
 )
 
-// InitDataStore ...
-func InitDataStore() error {
+func init() {
 	var err error
 	singleSession, err = mgo.Dial(app.DatabaseStore)
 	singleSession.SetMode(mgo.Monotonic, true)
 	if err != nil {
-		return err
+		panic(err)
 	}
-	return nil
-}
-
-// StoreUser ...
-func StoreUser(user *models.User) error {
-	session := singleSession.Clone()
-	defer session.Close()
-	c := session.DB("").C(collection)
-	err := c.Insert(user)
-	if err == nil {
-		q := bson.M{"provider": "email", "email": user.Email}
-		user = &models.User{}
-		err = c.Find(q).One(user)
-		return err
-	}
-	return err
-}
-
-// GetUserByEmail ...
-func GetUserByEmail(email string) (*models.User, error) {
-	user := &models.User{}
-	session := singleSession.Clone()
-	defer session.Close()
-
-	c := session.DB("").C(collection)
-	q := bson.M{"provider": "email", "email": email}
-	err := c.Find(q).One(user)
-	if err != nil {
-		return user, err
-	}
-	return user, nil
-}
-
-//Get ...
-func Get(id uuid.UUID) (*models.User, error) {
-	session := singleSession.Clone()
-	defer session.Close()
-	c := session.DB("").C(collection)
-	q := c.FindId(id)
-	user := &models.User{}
-	err := q.One(user)
-	return user, err
-}
-
-//Put ...
-func Put(user *models.User) error {
-	s := singleSession.Clone()
-	defer s.Close()
-
-	c := s.DB("").C(collection)
-
-	_, err := c.UpsertId(user.ID, user)
-	return err
+	Users = newMongoUserStore(singleSession)
 }

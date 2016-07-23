@@ -1,15 +1,20 @@
 package publicApi
 
 import (
-	"net/http"
-	"log"
 	"html/template"
-	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/auth"
+	"log"
+	"net/http"
+	"time"
+
 	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/app"
+	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/auth"
+	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/models"
+	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/storage"
 	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/templating"
 	"github.com/labstack/echo"
-    "github.com/markbates/goth/gothic"
+	"github.com/markbates/goth/gothic"
 )
+
 type (
 	signingProvider struct {
 		Name string `json:"name"`
@@ -19,7 +24,7 @@ type (
 
 var (
 	tmplt *template.Template
-	err error
+	err   error
 )
 
 func init() {
@@ -46,8 +51,6 @@ func getProviders(c *echo.Context) error {
 	return c.JSON(http.StatusOK, results)
 }
 
-
-
 func redirectHandler(c *echo.Context) error {
 	gothic.BeginAuthHandler(c.Response(), c.Request())
 	return nil
@@ -58,22 +61,26 @@ func callbackHandler(c *echo.Context) error {
 	if err != nil {
 		log.Println(err)
 		return err
-	}	
-	log.Printf("provider: %v", user.Provider)
-	log.Printf("email: %v", user.Email)
-	log.Printf("name: %v", user.Name)
-	log.Printf("nickname: %v", user.NickName)
-	log.Printf("desc: %v", user.Description)
-	log.Printf("user id: %v", user.UserID)
-	log.Printf("avatar url: %v", user.AvatarURL)
-	log.Printf("location: %v", user.Location)
-	log.Printf("token : %v", user.AccessToken)
-	log.Printf("token secret: %v", user.AccessTokenSecret)
-	log.Printf("refresh token: %v", user.RefreshToken)
-	log.Printf("expire: %v", user.ExpiresAt)
+	}
 	provider, _ := gothic.GetProviderName(c.Request())
-	log.Println("the provider is : " , provider)
+	u, err := storage.Users.Find(provider, user.UserID)
+	if err != nil {
+		u = &models.User{
+			ID:        models.NewID(),
+			Provider:  provider,
+			Subject:   user.UserID,
+			Name:      user.Name,
+			Email:     user.Email,
+			AvatarURL: user.AvatarURL,
+			Role:      "readOnly",
+			Active:    true,
+			Created:   time.Now().UTC(),
+		}
+		storage.Users.Put(u)
+	}
+
+	log.Println("the provider is : ", provider)
 	tmplt.ExecuteTemplate(c.Response(), "oauthCallback.html", user)
-	
+
 	return nil
 }

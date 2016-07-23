@@ -14,7 +14,7 @@ type (
 		Subject       string    `json:"subject"    bson:"subject"`
 		Name          string    `json:"name"       bson:"name"`
 		Email         string    `json:"email"      bson:"email"`
-		Roles         []string  `json:"roles"      bson:"roles"`
+		Role          string    `json:"role"      bson:"role"`
 		AvatarURL     string    `json:"avatar_url" bson:"avatar_url"`
 		Active        bool      `json:"active"     bson:"active"`
 		Created       time.Time `json:"created"    bson:"created"`

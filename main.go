@@ -5,7 +5,6 @@ import (
 
 	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/api/publicApi"
 	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/app"
-	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/storage"
 	"github.com/labstack/echo"
 )
 
@@ -17,10 +16,10 @@ func main() {
 	log.Println("strt .........")
 	localApp := app.CreateApp()
 	publicApi.InitAuthWebServices(localApp)
-	err := storage.InitDataStore()
-	if err != nil {
-		panic(err)
-	}
+	// err := storage.InitDataStore()
+	// if err != nil {
+	// 	panic(err)
+	// }
 	// messaging.WireSMTP()
 	app.Run(localApp)
 }
