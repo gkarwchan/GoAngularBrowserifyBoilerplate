@@ -4,9 +4,9 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-	"time"
 
 	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/app"
+	appAuth "github.com/gkarwchan/GoAngularBrowserifyBoilerplate/appServices/auth"
 	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/auth"
 	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/models"
 	"github.com/gkarwchan/GoAngularBrowserifyBoilerplate/storage"
@@ -63,23 +63,16 @@ func callbackHandler(c *echo.Context) error {
 		return err
 	}
 	provider, _ := gothic.GetProviderName(c.Request())
-	u, err := storage.Users.Find(provider, user.UserID)
+	var u *models.User
+	u, err = storage.Users.Find(provider, user.UserID)
 	if err != nil {
-		u = &models.User{
-			ID:        models.NewID(),
-			Provider:  provider,
-			Subject:   user.UserID,
-			Name:      user.Name,
-			Email:     user.Email,
-			AvatarURL: user.AvatarURL,
-			Role:      "readOnly",
-			Active:    true,
-			Created:   time.Now().UTC(),
+		u, err = appAuth.CreateNewOAuthUser(user)
+		if err != nil {
+			return err
 		}
-		storage.Users.Put(u)
 	}
 
-	log.Println("the provider is : ", provider)
+	log.Println("te user : ", u.Provider)
 	tmplt.ExecuteTemplate(c.Response(), "oauthCallback.html", user)
 
 	return nil

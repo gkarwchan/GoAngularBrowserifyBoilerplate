@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-    debug = require('gulp-debug'),
+    //debug = require('gulp-debug'),
     config = require('../config');
 
 gulp.task('fonts', function() {
